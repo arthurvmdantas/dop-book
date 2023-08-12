@@ -1,0 +1,16 @@
+{
+  "name": "dop-book",
+  "version": "1.0.0",
+  "description": "Studying the Data Oriented Programming book by Yehonathan Sharvit",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arthur V. M. Dantas",
+  "license": "ISC",
+  "dependencies": {
+    "ramda": "^0.29.0"
+  }
+}
