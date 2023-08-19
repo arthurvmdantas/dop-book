@@ -5,8 +5,8 @@ export class Catalog {
    * Retrieves the author name based on the provided author ID and data.
    *
    * @param {string} authorId - The ID of the author.
-   * @param {object} data - The data containing the authors.
-   * @return {string} The name of the author.
+   * @param {object} data - The catalog data containing the authors.
+   * @return {string | undefined} The name of the author or undefined.
    */
   static getAuthorName(authorId, data) {
     const authorName = R.path(["authorsById", authorId, "name"], data);
@@ -21,6 +21,10 @@ export class Catalog {
    * @return {array} An array of author names.
    */
   static authorNames(book, data) {
+    if (!book) {
+      return [];
+    }
+
     const authors = R.path(["authorIds"], book);
     const names = authors.map((id) => Catalog.getAuthorName(id, data));
     return names;
@@ -64,6 +68,7 @@ export class Catalog {
       R.map((book) => Catalog.bookInfo(book, data)),
       R.values
     );
+
     return transform(filtered);
   }
 }
