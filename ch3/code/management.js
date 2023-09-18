@@ -1,27 +1,36 @@
 import * as R from "ramda";
 
-export class Management {
+export class UserManagement {
   /**
    * Check if the given email belongs to a librarian.
    *
    * @param {string} email - The email to check.
-   * @param {object} data - The data object containing librarian information.
+   * @param {object} data - The data object containing user information.
    * @return {boolean} - True if the email belongs to a librarian, false otherwise.
    */
   static isLibrarian(email, data) {
-    return email in R.path(["management", "librariansByEmail"], data);
+    return email in R.path(["librariansByEmail"], data);
   }
 
   /**
    * Determines if the given email belongs to a VIP member.
    *
    * @param {string} email - The email to check.
-   * @param {object} data - The data object containing member information.
+   * @param {object} data - The data object containing user information.
    * @return {boolean} Returns true if the email belongs to a VIP member, otherwise returns false.
    */
   static isVIPMember(email, data) {
-    return (
-      R.path(["management", "membersByEmail", email, "isVIP"], data) === true
-    );
+    return R.path(["membersByEmail", email, "isVIP"], data) === true;
+  }
+
+  /**
+   * Determines if the given email belongs to a super member.
+   *
+   * @param {string} email - The email to check.
+   * @param {object} data - The data object containing user information.
+   * @return {boolean} Returns true if the email belongs to a super member, otherwise returns false.
+   */
+  static isSuper(email, data) {
+    return R.path(["membersByEmail", email, "isSuper"], data) === true;
   }
 }

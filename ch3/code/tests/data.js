@@ -57,6 +57,7 @@ export const libraryData = {
         encryptedPassword: "pn7l01LP",
         isBlocked: false,
         isVIP: false,
+        isSuper: true,
         bookLendings: [
           {
             bookItemId: "book-item-2",
